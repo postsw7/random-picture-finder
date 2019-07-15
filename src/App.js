@@ -13,7 +13,13 @@ function App() {
           return (
             <div className='column is-one-fifth' key={photo.id}>
               <figure>
-                <img src={photo.urls.thumb} alt={photo.alt_description} />
+                <a
+                  href={photo.urls.raw}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <img src={photo.urls.thumb} alt={photo.alt_description} />
+                </a>
                 <figcaption>
                   {photo.description}
                   <p>Photographer: {photo.user.name}</p>
