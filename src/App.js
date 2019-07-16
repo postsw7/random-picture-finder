@@ -4,12 +4,18 @@ import {
   useRandomPhotos,
   useSearchForm,
   useFeatureToggle,
+  useOrientationSelect,
 } from './utils/hooks';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
   const { handleToggleChange, isToggled } = useFeatureToggle();
-  const randomPhotos = useRandomPhotos({ query, featured: isToggled });
+  const { handleSelectChange, orientation } = useOrientationSelect();
+  const randomPhotos = useRandomPhotos({
+    query,
+    featured: isToggled,
+    orientation,
+  });
 
   return (
     <div className='App'>
@@ -40,6 +46,18 @@ function App() {
               <label htmlFor='switchRoundedDefault'>
                 Switch rounded default
               </label>
+            </div>
+            <div className='field'>
+              <div className='control'>
+                <div className='select is-rounded is-info'>
+                  <select onChange={handleSelectChange}>
+                    <option>Select Orientation</option>
+                    <option value='landscape'>Landscape</option>
+                    <option value='portrait'>Portrait</option>
+                    <option value='squarish'>Squarish</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -2,25 +2,34 @@ import { useState, useEffect } from 'react';
 import API from '../api';
 const MAX_COUNT = 30;
 
-export function useRandomPhotos({ query = '', featured = false }) {
+export function useRandomPhotos({
+  query = '',
+  featured = false,
+  orientation = '',
+}) {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     const params = {
-      params: {
-        count: MAX_COUNT,
-        query,
-        featured,
-      },
+      count: MAX_COUNT,
+      featured,
     };
 
+    if (orientation !== '') {
+      params.orientation = orientation;
+    }
+
+    if (query !== '') {
+      params.query = query;
+    }
+
     async function getRandomPhotos() {
-      const { data } = await API.get('/photos/random', params);
+      const { data } = await API.get('/photos/random', { params });
       setPhotos(data);
     }
 
     getRandomPhotos();
-  }, [featured, query]);
+  }, [featured, orientation, query]);
 
   return photos;
 }
@@ -59,5 +68,19 @@ export function useFeatureToggle() {
   return {
     handleToggleChange,
     isToggled,
+  };
+}
+
+export function useOrientationSelect() {
+  const [orientation, setOrientation] = useState('');
+
+  const handleSelectChange = event => {
+    event.persist();
+    setOrientation(event.target.value);
+  };
+
+  return {
+    handleSelectChange,
+    orientation,
   };
 }
