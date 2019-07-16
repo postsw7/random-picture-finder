@@ -6,3 +6,4 @@ export { default as Hero } from './Hero';
 export { default as Title } from './Title';
 export { default as Section } from './Section';
 export { default as Level } from './Level';
+export { default as Column } from './Column';
