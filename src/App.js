@@ -14,6 +14,7 @@ import {
   Hero,
   Title,
   Section,
+  Level,
 } from 'components';
 
 function App() {
@@ -37,21 +38,14 @@ function App() {
           handleInputChange={handleInputChange}
           handleSubmit={handleSubmit}
         />
-        <div className='level'>
-          <div className='level-left'>
-            <div className='level-item'>
-              <ToggleInput
-                isToggled={isToggled}
-                handleToggleChange={handleToggleChange}
-              />
-            </div>
-          </div>
-          <div className='level-right'>
-            <div className='level-item'>
-              <SelectInput handleSelectChange={handleSelectChange} />
-            </div>
-          </div>
-        </div>
+        <Level>
+          <ToggleInput
+            left={true}
+            isToggled={isToggled}
+            handleToggleChange={handleToggleChange}
+          />
+          <SelectInput right={true} handleSelectChange={handleSelectChange} />
+        </Level>
       </Hero>
       <Section>
         <div className='columns is-multiline is-mobile is-centered'>
