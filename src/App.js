@@ -29,7 +29,7 @@ function App() {
   });
 
   return (
-    <div className='App'>
+    <>
       <Hero>
         <Title
           title={'Random Picture Finder'}
@@ -49,7 +49,7 @@ function App() {
         </Level>
       </Hero>
       <Section>{isLoading ? <Loading /> : <Column items={photos} />}</Section>
-    </div>
+    </>
   );
 }
 
