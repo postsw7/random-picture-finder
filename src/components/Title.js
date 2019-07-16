@@ -3,8 +3,8 @@ import { string } from 'prop-types';
 
 const Title = ({ title, subtitle }) => (
   <>
-    <h1 className='title'>{title}</h1>
-    <h2 className='subtitle'>{subtitle}</h2>
+    <h1 className='title has-text-centered'>{title}</h1>
+    <h2 className='subtitle has-text-centered'>{subtitle}</h2>
   </>
 );
 
