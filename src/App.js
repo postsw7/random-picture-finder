@@ -7,6 +7,7 @@ import {
   useOrientationSelect,
 } from './utils/hooks';
 import PhotoCard from './components/PhotoCard';
+import SearchInput from './components/SearchInput';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
@@ -25,18 +26,10 @@ function App() {
           <div className='container'>
             <h1 className='title'>Random Picture Finder</h1>
             <h2 className='subtitle'>BresoTec Assignment</h2>
-            <div className='field'>
-              <div className='control'>
-                <form onSubmit={handleSubmit}>
-                  <input
-                    onChange={handleInputChange}
-                    className='input is-primary is-rounded search-input'
-                    type='text'
-                    placeholder='Search high-resolution random photos'
-                  />
-                </form>
-              </div>
-            </div>
+            <SearchInput
+              handleInputChange={handleInputChange}
+              handleSubmit={handleSubmit}
+            />
             <div className='level'>
               <div className='level-left'>
                 <div className='level-item'>
