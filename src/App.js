@@ -15,13 +15,14 @@ import {
   Section,
   Level,
   Column,
+  Loading,
 } from 'components';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
   const { handleToggleChange, isToggled } = useFeatureToggle();
   const { handleSelectChange, orientation } = useOrientationSelect();
-  const randomPhotos = useRandomPhotos({
+  const { photos, isLoading } = useRandomPhotos({
     query,
     featured: isToggled,
     orientation,
@@ -47,9 +48,7 @@ function App() {
           <SelectInput right={true} handleSelectChange={handleSelectChange} />
         </Level>
       </Hero>
-      <Section>
-        <Column items={randomPhotos} />
-      </Section>
+      <Section>{isLoading ? <Loading /> : <Column items={photos} />}</Section>
     </div>
   );
 }

@@ -8,6 +8,7 @@ export function useRandomPhotos({
   orientation = '',
 }) {
   const [photos, setPhotos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const params = {
@@ -24,14 +25,16 @@ export function useRandomPhotos({
     }
 
     async function getRandomPhotos() {
+      setIsLoading(true);
       const { data } = await API.get('/photos/random', { params });
       setPhotos(data);
+      setIsLoading(false);
     }
 
     getRandomPhotos();
   }, [featured, orientation, query]);
 
-  return photos;
+  return { photos, isLoading };
 }
 
 export function useSearchForm() {
