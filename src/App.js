@@ -1,13 +1,31 @@
 import React from 'react';
 import './App.scss';
-import { useRandomPhotos } from './utils/hooks';
+import { useRandomPhotos, useSearchForm } from './utils/hooks';
 
 function App() {
-  const randomPhotos = useRandomPhotos();
+  const { handleSubmit, handleInputChange, query } = useSearchForm();
+  const randomPhotos = useRandomPhotos(query);
 
   return (
     <div className='App'>
-      <div>Random Picture List</div>
+      <section className='hero'>
+        <div className='hero-body'>
+          <div className='container'>
+            <h1 className='title'>Random Picture Finder</h1>
+            <h2 className='subtitle'>BresoTec Assignment</h2>
+            <div className='control'>
+              <form onSubmit={handleSubmit}>
+                <input
+                  onChange={handleInputChange}
+                  className='input is-primary is-rounded search-input'
+                  type='text'
+                  placeholder='Search high-resolution random photos'
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className='columns is-multiline'>
         {randomPhotos.map(photo => {
           return (
