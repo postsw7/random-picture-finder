@@ -6,4 +6,8 @@
 
 figure {
   display: inline-block;
+
+  & > figcaption {
+    padding: 1.5rem;
+  }
 }

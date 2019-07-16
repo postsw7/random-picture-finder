@@ -6,6 +6,7 @@ import {
   useFeatureToggle,
   useOrientationSelect,
 } from './utils/hooks';
+import PhotoCard from './components/PhotoCard';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
@@ -78,22 +79,18 @@ function App() {
           <div className='columns is-multiline is-mobile is-centered'>
             {randomPhotos.map(photo => {
               return (
-                <div className='column is-one-fifth' key={photo.id}>
-                  <figure>
-                    <a
-                      href={photo.urls.raw}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      <img src={photo.urls.thumb} alt={photo.alt_description} />
-                    </a>
-                    <figcaption>
-                      {photo.description}
-                      <p>Photographer: {photo.user.name}</p>
-                      <p>Downloads: {photo.downloads}</p>
-                      <p>Likes: {photo.likes}</p>
-                    </figcaption>
-                  </figure>
+                <div className='column is-one-third' key={photo.id}>
+                  <PhotoCard
+                    picture={photo.urls.small}
+                    original_picture={photo.urls.raw}
+                    profile_image={photo.user.profile_image.small}
+                    name={photo.user.name}
+                    username={photo.user.username}
+                    description={photo.description}
+                    alt_description={photo.alt_description}
+                    downloads={photo.downloads}
+                    likes={photo.likes}
+                  />
                 </div>
               );
             })}
