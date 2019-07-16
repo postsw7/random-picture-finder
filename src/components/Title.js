@@ -1,4 +1,5 @@
 import React from 'react';
+import { string } from 'prop-types';
 
 const Title = ({ title, subtitle }) => (
   <>
@@ -8,3 +9,8 @@ const Title = ({ title, subtitle }) => (
 );
 
 export default Title;
+
+Title.propTypes = {
+  title: string.isRequired,
+  subtitle: string.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import { string, number } from 'prop-types';
 
 const PhotoCard = ({
   picture,
@@ -58,3 +59,15 @@ const PhotoCard = ({
 );
 
 export default PhotoCard;
+
+PhotoCard.propTypes = {
+  picture: string,
+  original_picture: string,
+  profile_image: string,
+  name: string,
+  username: string,
+  description: string,
+  alt_description: string,
+  downloads: number,
+  likes: number,
+};

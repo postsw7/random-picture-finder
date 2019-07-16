@@ -1,4 +1,5 @@
 import React from 'react';
+import { node } from 'prop-types';
 
 const Section = ({ children }) => (
   <section className='section'>
@@ -7,3 +8,7 @@ const Section = ({ children }) => (
 );
 
 export default Section;
+
+Section.propTypes = {
+  children: node.isRequired,
+};

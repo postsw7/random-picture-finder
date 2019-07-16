@@ -1,5 +1,14 @@
 import React from 'react';
 import { PhotoCard } from 'components';
+import {
+  string,
+  number,
+  object,
+  arrayOf,
+  objectOf,
+  shape,
+  oneOfType,
+} from 'prop-types';
 
 const Column = ({ items }) => (
   <div className='columns is-multiline is-mobile is-centered'>
@@ -24,3 +33,17 @@ const Column = ({ items }) => (
 );
 
 export default Column;
+
+Column.propTypes = {
+  items: arrayOf(
+    shape({
+      id: string,
+      description: string,
+      alt_description: string,
+      urls: objectOf(string),
+      likes: number,
+      user: objectOf(oneOfType([string, number, object])),
+      downloads: number,
+    })
+  ),
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import { node } from 'prop-types';
 
 const Hero = ({ children }) => (
   <section className='hero'>
@@ -9,3 +10,7 @@ const Hero = ({ children }) => (
 );
 
 export default Hero;
+
+Hero.propTypes = {
+  children: node.isRequired,
+};
