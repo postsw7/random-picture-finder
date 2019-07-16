@@ -6,8 +6,7 @@ import {
   useFeatureToggle,
   useOrientationSelect,
 } from './utils/hooks';
-import PhotoCard from './components/PhotoCard';
-import SearchInput from './components/SearchInput';
+import { PhotoCard, SearchInput, SelectInput, ToggleInput } from 'components';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
@@ -33,34 +32,15 @@ function App() {
             <div className='level'>
               <div className='level-left'>
                 <div className='level-item'>
-                  <div className='field'>
-                    <input
-                      id='featured-switch'
-                      type='checkbox'
-                      className='switch is-rounded'
-                      defaultChecked={isToggled}
-                      onChange={handleToggleChange}
-                    />
-                    <label className='label' htmlFor='featured-switch'>
-                      Featured {isToggled ? 'On' : 'Off'}
-                    </label>
-                  </div>
+                  <ToggleInput
+                    isToggled={isToggled}
+                    handleToggleChange={handleToggleChange}
+                  />
                 </div>
               </div>
               <div className='level-right'>
                 <div className='level-item'>
-                  <div className='field'>
-                    <div className='control'>
-                      <div className='select is-rounded is-info'>
-                        <select onChange={handleSelectChange}>
-                          <option>Select Orientation</option>
-                          <option value='landscape'>Landscape</option>
-                          <option value='portrait'>Portrait</option>
-                          <option value='squarish'>Squarish</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+                  <SelectInput handleSelectChange={handleSelectChange} />
                 </div>
               </div>
             </div>
