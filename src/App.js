@@ -5,8 +5,15 @@ import {
   useSearchForm,
   useFeatureToggle,
   useOrientationSelect,
-} from './utils/hooks';
-import { PhotoCard, SearchInput, SelectInput, ToggleInput } from 'components';
+} from 'utils/hooks';
+import {
+  PhotoCard,
+  SearchInput,
+  SelectInput,
+  ToggleInput,
+  Hero,
+  Title,
+} from 'components';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
@@ -20,33 +27,31 @@ function App() {
 
   return (
     <div className='App'>
-      <section className='hero'>
-        <div className='hero-body'>
-          <div className='container'>
-            <h1 className='title'>Random Picture Finder</h1>
-            <h2 className='subtitle'>BresoTec Assignment</h2>
-            <SearchInput
-              handleInputChange={handleInputChange}
-              handleSubmit={handleSubmit}
-            />
-            <div className='level'>
-              <div className='level-left'>
-                <div className='level-item'>
-                  <ToggleInput
-                    isToggled={isToggled}
-                    handleToggleChange={handleToggleChange}
-                  />
-                </div>
-              </div>
-              <div className='level-right'>
-                <div className='level-item'>
-                  <SelectInput handleSelectChange={handleSelectChange} />
-                </div>
-              </div>
+      <Hero>
+        <Title
+          title={'Random Picture Finder'}
+          subtitle={'BresoTec Assignment'}
+        />
+        <SearchInput
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+        <div className='level'>
+          <div className='level-left'>
+            <div className='level-item'>
+              <ToggleInput
+                isToggled={isToggled}
+                handleToggleChange={handleToggleChange}
+              />
+            </div>
+          </div>
+          <div className='level-right'>
+            <div className='level-item'>
+              <SelectInput handleSelectChange={handleSelectChange} />
             </div>
           </div>
         </div>
-      </section>
+      </Hero>
       <section className='section'>
         <div className='container'>
           <div className='columns is-multiline is-mobile is-centered'>
