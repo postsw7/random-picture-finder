@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import API from '../api';
 const MAX_COUNT = 30;
 
-export function useRandomPhotos(query = '') {
+export function useRandomPhotos({ query = '', featured = false }) {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
@@ -10,6 +10,7 @@ export function useRandomPhotos(query = '') {
       params: {
         count: MAX_COUNT,
         query,
+        featured,
       },
     };
 
@@ -19,7 +20,7 @@ export function useRandomPhotos(query = '') {
     }
 
     getRandomPhotos();
-  }, [query]);
+  }, [featured, query]);
 
   return photos;
 }
@@ -44,5 +45,19 @@ export function useSearchForm() {
     handleSubmit,
     handleInputChange,
     query,
+  };
+}
+
+export function useFeatureToggle() {
+  const [isToggled, setIsToggled] = useState(false);
+
+  const handleToggleChange = event => {
+    event.persist();
+    setIsToggled(isToggled => !isToggled);
+  };
+
+  return {
+    handleToggleChange,
+    isToggled,
   };
 }

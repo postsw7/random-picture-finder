@@ -1,10 +1,15 @@
 import React from 'react';
 import './App.scss';
-import { useRandomPhotos, useSearchForm } from './utils/hooks';
+import {
+  useRandomPhotos,
+  useSearchForm,
+  useFeatureToggle,
+} from './utils/hooks';
 
 function App() {
   const { handleSubmit, handleInputChange, query } = useSearchForm();
-  const randomPhotos = useRandomPhotos(query);
+  const { handleToggleChange, isToggled } = useFeatureToggle();
+  const randomPhotos = useRandomPhotos({ query, featured: isToggled });
 
   return (
     <div className='App'>
@@ -22,6 +27,19 @@ function App() {
                   placeholder='Search high-resolution random photos'
                 />
               </form>
+            </div>
+            <div className='field'>
+              <input
+                id='switchRoundedDefault'
+                type='checkbox'
+                name='switchRoundedDefault'
+                className='switch is-rounded'
+                defaultChecked={isToggled}
+                onChange={handleToggleChange}
+              />
+              <label htmlFor='switchRoundedDefault'>
+                Switch rounded default
+              </label>
             </div>
           </div>
         </div>
