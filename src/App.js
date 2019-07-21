@@ -5,7 +5,6 @@ import {
   useSearchForm,
   useFeatureToggle,
   useOrientationSelect,
-  useResizeMasonry,
 } from 'utils/hooks';
 import {
   SearchInput,
@@ -28,7 +27,7 @@ function App() {
     featured: isToggled,
     orientation,
   });
-  useResizeMasonry();
+
   return (
     <>
       <Hero>

@@ -11,7 +11,7 @@ import {
 } from 'prop-types';
 
 const Column = ({ items }) => (
-  <div className='columns is-mobile masonry'>
+  <div className='columns is-mobile is-multiline is-centered'>
     {items.map(photo => {
       return (
         <div className='column is-one-third' key={photo.id}>
