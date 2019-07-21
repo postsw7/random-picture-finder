@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import API from '../api';
 const MAX_COUNT = 30;
 
@@ -86,4 +86,41 @@ export function useOrientationSelect() {
     handleSelectChange,
     orientation,
   };
+}
+
+export function useIntersect({ root = null, rootMargin, threshold = 0 }) {
+  const [entry, updateEntry] = useState({});
+  const [node, setNode] = useState(null);
+
+  const observer = useRef(
+    new window.IntersectionObserver(([entry]) => updateEntry(entry), {
+      root,
+      rootMargin,
+      threshold,
+    })
+  );
+
+  useEffect(() => {
+    const { current: currentObserver } = observer;
+    currentObserver.disconnect();
+
+    if (node) currentObserver.observe(node);
+    if (entry.isIntersecting) {
+      preloadImage(entry.target);
+      // Stop watching and load the image
+      currentObserver.unobserve(entry.target);
+    }
+
+    return () => currentObserver.disconnect();
+  }, [entry.isIntersecting, entry.target, node]);
+
+  function preloadImage(img) {
+    const src = img.getAttribute('data-src');
+    if (!src) {
+      return;
+    }
+    img.src = src;
+  }
+
+  return [setNode];
 }

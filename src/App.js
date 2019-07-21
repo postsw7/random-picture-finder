@@ -5,6 +5,7 @@ import {
   useSearchForm,
   useFeatureToggle,
   useOrientationSelect,
+  useIntersect,
 } from 'utils/hooks';
 import {
   SearchInput,
@@ -48,7 +49,13 @@ function App() {
           <SelectInput right={true} handleSelectChange={handleSelectChange} />
         </Level>
       </Hero>
-      <Section>{isLoading ? <Loading /> : <Column items={photos} />}</Section>
+      <Section>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Column items={photos} useIntersect={useIntersect} />
+        )}
+      </Section>
     </>
   );
 }

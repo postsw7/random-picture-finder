@@ -11,12 +11,13 @@ import {
   oneOfType,
 } from 'prop-types';
 
-const Column = ({ items }) => (
+const Column = ({ items, useIntersect }) => (
   <div className='columns is-mobile is-multiline is-centered'>
-    {items.map(photo => {
+    {items.map((photo, i) => {
       return (
         <div className='column is-one-third' key={photo.id}>
           <PhotoCard
+            idx={i}
             picture={photo.urls.small}
             original_picture={photo.urls.raw}
             profile_image={photo.user.profile_image.small}
@@ -26,6 +27,7 @@ const Column = ({ items }) => (
             alt_description={photo.alt_description}
             downloads={photo.downloads}
             likes={photo.likes}
+            useIntersect={useIntersect}
           />
         </div>
       );
