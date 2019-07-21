@@ -1,6 +1,7 @@
 import React from 'react';
 import { PhotoCard } from 'components';
 import {
+  bool,
   string,
   number,
   object,
@@ -42,7 +43,7 @@ Column.propTypes = {
       alt_description: string,
       urls: objectOf(string),
       likes: number,
-      user: objectOf(oneOfType([string, number, object])),
+      user: objectOf(oneOfType([string, number, object, bool])),
       downloads: number,
     })
   ),
