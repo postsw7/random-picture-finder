@@ -29,7 +29,7 @@ const PhotoCard = ({
           </figure>
         </div>
         <div className='media-content'>
-          <p className='title is-4'>{name}</p>
+          <p className='title is-6'>{name}</p>
           <p className='subtitle is-6'>@{username}</p>
         </div>
       </div>

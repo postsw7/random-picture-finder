@@ -4,17 +4,27 @@
   box-sizing: border-box;
 }
 
+body {
+  background: rgba(34, 34, 34, 0.75);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 7px,
+    rgba(0, 0, 0, 0.8) 9px,
+    rgba(0, 0, 0, 0.8) 13px,
+    transparent 13px
+  );
+}
 
-.masonry {
-  display: flex;
-  flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
-  margin-left: -2px;
-  width: 100%;
-  height: 6200px;
+.section {
+  min-height: 1000px;
+}
 
-  & .column {
-    margin: 0 2px 2px 0;
-  }
+.loading {
+  color: #d4eaff;
+}
+
+.feature-label {
+  color: #d4eaff;
 }
 
 figure {
@@ -23,6 +33,25 @@ figure {
   & > figcaption {
     padding: 1.5rem;
   }
+}
+
+.card-image {
+  figure img {
+    width: 100%;
+    height: 250px;
+    background-size: contain;
+  }
+
+  figcaption {
+    padding-top: 10px;
+    padding-bottom: 0;
+    height: 60px;
+    overflow: auto;
+  }
+}
+
+.card-content {
+  padding-top: 0.5rem;
 }
 
 .neon {

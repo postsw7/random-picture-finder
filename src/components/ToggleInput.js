@@ -10,7 +10,7 @@ const ToggleInput = ({ isToggled, handleToggleChange }) => (
       defaultChecked={isToggled}
       onChange={handleToggleChange}
     />
-    <label className='label' htmlFor='featured-switch'>
+    <label className='label feature-label' htmlFor='featured-switch'>
       Featured {isToggled ? 'On' : 'Off'}
     </label>
   </div>
