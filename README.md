@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/postsw7/random-picture-finder/badge)](https://www.codefactor.io/repository/github/postsw7/random-picture-finder)
 # random-picture-finder
 
 ## Installation & Start
